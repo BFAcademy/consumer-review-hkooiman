@@ -169,16 +169,22 @@ public class Review {
  */
   public static double totalSentiment(String filename)
   {
-    // read in the file contents into a string using the textToString method with the filename
+    String str = textToString(filename);
 
-    // set up a sentimentTotal variable
     double sentimentTotal = 0;
 
-    // loop through the file contents 
+    int pos = 0;
+    while (str.indexOf(" ") >= 0)
+    {
+      pos = str.indexOf(" ");
+      String string1 = str.substring(0, str.indexOf(" "));
+      double value = Review.sentimentVal(string1);
+      sentimentTotal += value;
+      str = str.substring(pos + 1);
 
-       // find each word
-       // add in its sentimentVal
-       // set the file contents to start after this word
+    }
+
+    
    
    
 
@@ -193,7 +199,7 @@ public class Review {
   */
   public static int starRating(String filename)
   {
-    // call the totalSentiment method with the fileName
+    String str = Reveiw.texttoString(filename);
 
     // determine number of stars between 0 and 4 based on totalSentiment value 
     int stars = 0; // change this!
